@@ -7,6 +7,8 @@ import {
   Image
 } from 'react-native';
 import BodyText from '../components/BodyText';
+import Colors from '../constants/colors';
+import MainButton from '../components/MainButton';
 
 
 const GameOverScreen = props => {
@@ -15,14 +17,16 @@ const GameOverScreen = props => {
       <BodyText>The Game is Over!</BodyText>
       <View style={styles.imageContainer}>
         <Image 
+          fadeDuration={500}
           source={require('../assets/success.png')} 
           style={styles.image}
           resizeMode={'cover'} 
         />
       </View>
-      <BodyText>Number was: {props.toBeGuessed}</BodyText>
-      <BodyText>Computer guessed {props.toBeGuessed} after {props.roundsNumber} rounds</BodyText>
-      <Button title="NEW GAME" onPress={props.onRestart} />
+      <BodyText>Number was: <Text style={styles.highlight}>{props.toBeGuessed}</Text></BodyText>
+      <BodyText>Computer guessed <Text style={styles.highlight}>{props.toBeGuessed}</Text> after {props.roundsNumber} rounds</BodyText>
+      <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
+      
     </View>
   );
 };
@@ -48,7 +52,12 @@ const styles = StyleSheet.create({
     borderRadius: 150,
     width: '100%',
     height: '100%',
-  }
+  },
+
+  highlight: {
+    color: Colors.primary,
+
+  },
 
 });
 
