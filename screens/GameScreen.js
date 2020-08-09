@@ -5,7 +5,8 @@ import {
   StyleSheet, 
   Alert,
   ScrollView,
-  FlatList
+  FlatList,
+  Dimensions
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: Dimensions.get('window').height > 600 ? 20: 10,
     width: 400,
     maxWidth: '90%',
 
@@ -124,12 +125,12 @@ const styles = StyleSheet.create({
   listContainer: {
     flex: 1,
     marginTop: 20,
-    width: '80%',
+    width: Dimensions.get('window').width > 350 ? '60%' : '80%'
   },
 
   list: {
     flexGrow: 1,
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'flex-end'
   },
 
@@ -141,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    width: '60%'
+    width: '100%'
   },
 
 });
